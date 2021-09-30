@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<title>W-Mail</title>
+<html>
+  <body style="background-color: #7dc5ff;">
+    <center>
+      <script src="https://kihtrak.com/cloud_variable/cloudify.min.js"></script>
+      <script src="/login.js"></script>
+      <script>
+        var cloud_message;
+        var previousMessage = cloud_message;
+        function sendMessage() {
+          if (user !== null) {
+            cloud_message = prompt("Type your message below:") + " - " + user;
+            refreshMessage();
+          }
+        }
+        function refreshMessage() {
+          if (user !== null) {
+            if (cloud_message != previousMessage) {
+              var tag = document.createElement("p");
+              var data = document.createTextNode(cloud_message);
+              tag.appendChild(data);
+              var element = document.getElementById("message");
+              element.appendChild(tag);
+            }
+            previousMessage = cloud_message;
+          }
+        }
+      </script>
+      <form>
+        <input type="button" value="Send Message" onclick="sendMessage();" />
+        <input type="button" value="Refresh" onclick="refreshMessage();" />
+      </form>
+      <i><div id="message"></div></i>
+    </center>
+  </body>
+</html>
