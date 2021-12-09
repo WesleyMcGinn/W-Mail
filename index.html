@@ -5,59 +5,20 @@
     <center>
       <script src="https://kihtrak.com/cloud_variable/cloudify.min.js"></script>
       <script>
-        var passcode = null;
-        while (passcode === null) {
-          passcode = prompt("Enter your passcode in the blank below:");
-        }
-        var user = null;
-        if (passcode === "6023") {
-          user = "Firetop";
-        } else {
-          if (passcode === "6721") {
-            user = "Clmcginn1";
-          } else {
-            if (passcode === "1460") {
-              user = "Eliza";
-            } else {
-              if (passcode === "7107") {
-                user = "Wesley";
-              } else {
-                if (passcode === "2375") {
-                  user = "Gladys";
-                } else {
-                  if (passcode === "8265") {
-                    user = "Louisa";
-                  } else {
-                    user = null;
-                    alert("Your passcode was not correct.  Please reload and try again.");
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (user !== null) {
-          alert("Welcome, " + user + "!");
-        }
-      </script>
-      <script>
+        var user = prompt("Type your name in the blank below: ");
         var cloud_message;
         var previousMessage = cloud_message;
         function sendMessage() {
-          if (user !== null) {
-            cloud_message = prompt("Type your message below:") + " - " + user;
-            refreshMessage();
-          }
+          cloud_message = prompt("Type your message below:") + " - " + user;
+          refreshMessage();
         }
         function refreshMessage() {
-          if (user !== null) {
-            if (cloud_message != previousMessage) {
-              var tag = document.createElement("p");
-              var data = document.createTextNode(cloud_message);
-              tag.appendChild(data);
-              var element = document.getElementById("message");
-              element.appendChild(tag);
-            }
+          if (cloud_message != previousMessage) {
+            var tag = document.createElement("p");
+            var data = document.createTextNode(cloud_message);
+            tag.appendChild(data);
+            var element = document.getElementById("message");
+            element.appendChild(tag);
             previousMessage = cloud_message;
           }
         }
@@ -66,7 +27,7 @@
         <input type="button" value="Send Message" onclick="sendMessage();" />
         <input type="button" value="Refresh" onclick="refreshMessage();" />
       </form>
-      <i><div id="message"></div></i>
+      <b><div id="message"></div></b>
     </center>
   </body>
 </html>
